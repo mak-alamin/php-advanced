@@ -3,6 +3,7 @@
  namespace APP\Core;
 
  class Router{
+    protected $controller;
     protected array $routes = [];
 
     public function get($path, $callback)
@@ -41,5 +42,15 @@
         if(is_string($callback)){
             $this->render_view($callback);
         }
+
+        
+        if(is_array($callback)){
+            $this->controller = new $callback[0]();
+        }
+        
+        // echo '<pre> Callback: ';
+        // print_r($callback);
+        
+        return call_user_func($callback);
      }
  }

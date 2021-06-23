@@ -13,4 +13,8 @@ $route->get('/about', 'about');
 $route->get('/services', 'service');
 $route->get('/contact', 'contact');
 
+$route->post('/contact', 'contact');
+
+$route->get('/', 'home');
+
 $route->run();

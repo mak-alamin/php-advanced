@@ -10,10 +10,11 @@ class PageController extends Controller{
     {
         $params = [
             'title' => 'About Us',
-            'author' => 'Mosharof'
+            'author' => 'Mosharof',
+            'menu' => '1'
         ];
 
-        $this->render('about');
+        $this->render('about', $params);
     }
 
     public function service()

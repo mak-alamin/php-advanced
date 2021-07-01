@@ -3,19 +3,17 @@
  namespace APP\Core;
 
  use APP\Core\Router;
- use APP\Core\Controller;
 
  class Application{
+      public static $app;
       public $router;
-      public $controller;
-      public $model;
       public $db;
 
       public function __construct()
       {
+         self::$app = $this;
+         
          $this->router = new Router();
-
-         $this->controller = new Controller($this->router);
       }
 
       public function run()

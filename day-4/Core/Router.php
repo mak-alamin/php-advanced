@@ -3,7 +3,6 @@
  namespace APP\Core;
 
  class Router{
-    protected $controller;
     protected array $routes = [];
 
     public function get($path, $callback)
@@ -18,9 +17,15 @@
 
      public function render_view($view, $params = [])
      {
-        if(file_exists(ROOT_DIR . "/views/$view.php")){
-            include_once ROOT_DIR . "/views/$view.php";
+        $content = file_get_contents(ROOT_DIR . "/views/$view.php");
+        
+        if ( !empty($params) ){  
+            foreach ($params as $key => $value) {
+               $content = str_replace("{{{$key}}}", $value, $content);
+            }
         }
+
+        echo $content;
      }
 
      public function handleRequest()
@@ -41,17 +46,9 @@
         }
         
         if(is_array($callback)){
-            // echo '<pre> Callback: ';
-            // print_r($callback[0]);
+            $callback[0] = new $callback[0](); 
+        }
 
-            // $this->controller = new $callback[0]();
-
-            // echo '<pre> Callback: ';
-            // print_r($this->controller);
-
-            // $callback[0] = $this->controller;
-
-            return call_user_func($callback);
-        }                
+        return call_user_func($callback);
      }
  }

@@ -9,14 +9,22 @@ require_once __DIR__ . '/vendor/autoload.php';
 //Define Constants
 define('ROOT_DIR', __DIR__ );
 
+//Initialize the Application Class
 $app = new Application();
 
-$app->router->get('/', 'home');
-$app->router->get('/about', [PageController::class, 'about']);
+//Router Instance
+$route = $app->router;
 
-$app->router->get('/services', [PageController::class, 'service']);
 
-$app->router->get('/contact', [PageController::class, 'contact']);
-$app->router->post('/contact', [PageController::class, 'handleContact']);
+//Your Routes
+$route->get('/', 'home');
+$route->get('/about', [PageController::class, 'about']);
 
+$route->get('/services', [PageController::class, 'service']);
+
+$route->get('/contact', [PageController::class, 'contact']);
+$route->post('/contact', [PageController::class, 'handleContact']);
+
+
+//Kick Off
 $app->run();

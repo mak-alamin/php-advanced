@@ -17,12 +17,18 @@
 
      public function render_view($view, $params = [])
      {
+        //  extract($params);
+
+        //  require_once ROOT_DIR . "/views/$view.php";
+
         $content = file_get_contents(ROOT_DIR . "/views/$view.php");
         
-        if ( !empty($params) ){  
+        if ( ! empty($params) ){  
+
             foreach ($params as $key => $value) {
                $content = str_replace("{{{$key}}}", $value, $content);
             }
+
         }
 
         echo $content;

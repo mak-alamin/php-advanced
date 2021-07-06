@@ -9,8 +9,16 @@ require_once __DIR__ . '/vendor/autoload.php';
 //Define Constants
 define('ROOT_DIR', __DIR__ );
 
+//Config
+$db_config = [
+    'host' => "localhost",
+    'dbname' => "php_test",
+    'username' => "root",
+    'password' => "mysqlpass"
+];
+
 //Initialize the Application Class
-$app = new Application();
+$app = new Application($db_config);
 
 //Router Instance
 $route = $app->router;

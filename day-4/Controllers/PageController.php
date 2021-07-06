@@ -19,7 +19,11 @@ class PageController extends Controller{
 
     public function service()
     {
-        echo "This is Service Page";
+        $params = [
+            'title' => 'Our Services'
+        ];
+
+        $this->render('service', $params);
 
     }
 

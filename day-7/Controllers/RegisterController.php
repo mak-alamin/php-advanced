@@ -36,14 +36,14 @@ class RegisterController extends Controller{
                     echo 'Data insertion failed!';
                 }
             }
-        
         }
     }
 
     public function login()
     {
-        if ( $this->method == 'get' && $_REQUEST['action'] != 'logout') {
+        if ( $this->method == 'get' && $_GET['action'] != 'logout') {
 
+            //Force redirect to admin page if logged in
             if(isset( $_SESSION['name'])){
                 header('Location: admin');
                 exit;
@@ -77,18 +77,12 @@ class RegisterController extends Controller{
             header('Location: admin');
             exit;
         }
-
         
-        if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'logout'){   
+        //Log Out
+        if(isset($_GET['action']) && $_GET['action'] == 'logout'){   
             session_destroy();
             header('Location: login');
             exit;
         }
-        
-        if(isset( $_SESSION['name'])){
-            header('Location: admin');
-            exit;
-        }
     }
-
 }

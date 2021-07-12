@@ -10,6 +10,7 @@ class DashboardController extends Controller{
     public function handleDashboard()
     {
         if( ! isset($_SESSION['name']) ){
+            session_destroy();
             header('Location: ' . ROOT_URI . '/login');
             exit;
         }

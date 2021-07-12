@@ -8,11 +8,11 @@ use APP\Controllers\DashboardController;
 use APP\Controllers\ProfileController;
 use APP\Controllers\RegisterController;
 
+$protocol = isset( $_SERVER['HTTPS']) ? 'https://' : 'http://';
 
 //Define Constants
-define('PROTOCOL' , isset( $_SERVER['HTTPS']) ? 'https://' : 'http://' );
 define('ROOT_DIR', __DIR__ );
-define('ROOT_URI', PROTOCOL . $_SERVER['HTTP_HOST'] );
+define('ROOT_URI', $protocol . $_SERVER['HTTP_HOST'] );
 
 
 //Config
@@ -47,6 +47,7 @@ $route->post('/login', [RegisterController::class, 'login']);
 
 $route->get('/admin', [DashboardController::class, 'handleDashboard']);
 $route->get('/admin/profile', [ProfileController::class, 'handleProfile']);
+
 
 //Kick Off
 $app->run();

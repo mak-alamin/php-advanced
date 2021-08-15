@@ -1,0 +1,17 @@
+.nav {
+  background-color: #031e47;
+  min-width: 15%;
+}
+.tab-content {
+  min-width: 70%;
+}
+
+table {
+  width: 100%;
+}
+
+tr td,
+tr th {
+  padding-left: 20px;
+  padding-right: 20px;
+}
